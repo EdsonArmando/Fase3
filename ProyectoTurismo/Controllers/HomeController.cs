@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTurismo.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace ProyectoTurismo.Controllers
 {
     public class HomeController : Controller
     {
+        private DBTurismo db = new DBTurismo();
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +29,25 @@ namespace ProyectoTurismo.Controllers
 
             return View();
         }
+        public ActionResult AgentePanel()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult TecnicoPanel()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult AdministradorPanel()
+        {
+            var usuarios = new DBTurismo();
+            ViewBag.Message = "Your contact page.";
+            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre");
+            return View(usuarios.usuarios.ToList());
+        }
+       
     }
 }

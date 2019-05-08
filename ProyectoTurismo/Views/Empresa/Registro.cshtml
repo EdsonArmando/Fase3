@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#show2").click(function () {
+                $("#museo").hide();
+            });
+            $("#museo1").click(function () {
+                $("#museo").show();
+                $("#hotel").hide();
+                $("#rest").hide();
+            });
+            $("#rest1").click(function () {
+                $("#rest").show();
+                $("#hotel").hide();
+                $("#museo").hide();
+            });
+            $("#hotel1").click(function () {
+                $("#hotel").show();
+                $("#rest").hide();
+                $("#museo").hide();
+            });
+          
+        });
+    </script>
+    <script type="text/javascript">
+        function validarFormulario() {
+            $("#formulario").validate();
+        }
+        $(document).ready(function () {
+            validarFormulario();
+        });
+        function validarFormulario() {
+            $("#formulario2").validate();
+        }
+        $(document).ready(function () {
+            validarFormulario();
+          
+        });
+    </script>
+    <style type="text/css">
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mensaje"  style="display: none;">
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> La empresa se encuentra en proceso de inscripcion.
+        </div>
+    </div>
+    <h3>Formulario</h3>
+    <div style="float: left;    width: 66% ">
+        @using (Html.BeginForm())
+        {
+            <form action="/Usuario/InsertarUsuario" method="post" id="formulario">
+                <div class="form-horizontal">
+                    <div class="center-block">
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>IDEmpresa</label>
+                                <input class="form-control" name="idEmpresa" id="idEmpresa" type="text" placeholder="IDEmpresa" required="required" data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Tipo</label>
+                                <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    IDTipo
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#" id="rest1">Restaurante</a>
+                                    <a class="dropdown-item" href="#" id="museo1">Museo</a>
+                                    <a class="dropdown-item" href="#" id="hotel1">Hotel</a>
+                                </div>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Nombre</label>
+                                <input class="form-control" name="nombre" id="nombre" type="text" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Direccion</label>
+                                <input class="form-control" name="direccion" id="direccion" type="text" placeholder="direccion" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Teléfono</label>
+                                <input class="form-control" name="telefono" id="telefono" type="tel" placeholder="telefono" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Correo</label>
+                                <input class="form-control" name="correo" id="correo" type="email" placeholder="correo" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Foto</label>
+                                <input class="form-control" name="foto" id="foto" type="file" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div id="museo" style="display: none;">
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Horario</label>
+                                    <input class="form-control" name="horario" id="horario" type="text" placeholder="horario" required="required" data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Tarifa</label>
+                                    <input class="form-control" name="tarifa" id="tarifa" type="text" placeholder="tarifa" required="required" data-validation-required-message="Please enter your phone number.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Aceptar" class="btn btn-default" id="envia1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+        </div>
+    <form id="formulario2" action="" method="post">
+        <div id="rest" style="display: none;">
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Especialidad</label>
+                    <input class="form-control" name="especialidad" id="especialidad" type="text" placeholder="id" required="required" data-validation-required-message="Please enter your phone number.">
+                </div>
+            </div>
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Nombre</label>
+                <input class="form-control" name="nombre" id="nombre" type="search" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+            </div>
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Horario Atención</label>
+                <input class="form-control" name="nombre" id="nombre" type="search" placeholder="horario" required="required" data-validation-required-message="Please enter your phone number.">
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Aceptar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="formulario3" action="" method="post">
+        <div id="hotel" style="display: none;">
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Servicio</label>
+                    <input class="form-control" name="servicio" id="servicio" type="text" placeholder="servicio" required="required" data-validation-required-message="Please enter your phone number.">
+                </div>
+            </div>
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Nombre</label>
+                <input class="form-control" name="nombre" id="nombre" type="text" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

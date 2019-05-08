@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
+@{
+    ViewBag.Title = "TecnicoVisita";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TecnicoVisita</h2>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">FechaInicio</th>
+            <th scope="col">Técnico</th>
+            <th scope="col">Empresa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.recorrido.nombre</td>
+            <td>@item.recorrido.fechaInicio</td>
+            <td>@item.usuario.nombre</td>
+            <td>@item.empresa.nombre</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+

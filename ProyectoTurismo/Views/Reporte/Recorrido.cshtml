@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
+@{
+    ViewBag.Title = "Recorrido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recorrido</h2>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Recorrido</th>
+            <th scope="col">Fecha Inicio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.recorrido.nombre</td>
+                <td>@item.recorrido.fechaInicio</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+

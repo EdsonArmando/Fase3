@@ -1,0 +1,504 @@
+﻿@model IEnumerable<ProyectoTurismo.DAL.usuario>
+
+@{
+    ViewBag.Title = "Panel de Agente";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#form1").click(function () {
+                $("#form").show();
+                $("#listAgente").hide();
+                $("#listTecnico").hide();
+            });
+            $("#mostrarA").click(function () {
+                $("#listAgente").show();
+                $("#form").hide();
+                $("#listTecnico").hide();
+            });
+            $("#mostrarT").click(function () {
+                $("#listTecnico").show();
+                $("#form").hide();
+                $("#listAgente").hide();
+            });
+            $("#reporte1").click(function () {
+                $("#consulta1").show();
+                $("#consulta2").hide();
+                $("#listTecnico").hide();
+                $("#form").hide();
+                $("#listAgente").hide();
+            });
+            $("#reporte2").click(function () {
+                $("#consulta2").show();
+                $("#consulta1").hide();
+                $("#consulta3").hide();
+                $("#listTecnico").hide();
+                $("#form").hide();
+                $("#listAgente").hide();
+            });
+            $("#reporte3").click(function () {
+                $("#consulta3").show();
+                $("#consulta2").hide();
+                $("#consulta1").hide();
+                $("#listTecnico").hide();
+                $("#form").hide();
+                $("#listAgente").hide();
+            });
+            function validarFormulario() {
+                $("#formulario").validate();
+            }
+            $(document).ready(function () {
+                validarFormulario();
+            });
+        });
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="btn-group">
+        <button type="button" id="form1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ingresar Usuarios
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" id="mostrarA" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Listado Agentes
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" id="mostrarT" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Listado Técnicos
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" id="reporte1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reporte Region Sitios
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" id="reporte2" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reporte  Empresas
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" id="reporte3" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reporte  Visitas
+        </button>
+    </div>
+
+    <form action="/usuario/CrearUsuario" method="post" id="searchForm">
+        <div style="display: none" id="form">
+            <h3>Registro</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>DPI</label>
+                    <input class="form-control" name="dpi" id="dpi" type="number" placeholder="dpi" required="required" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Rol</label>
+
+                    @Html.DropDownList("idRol", null, htmlAttributes: new { @class = "form-control" })
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Nombre</label>
+                    <input class="form-control" name="nombre" id="nombre" type="text" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Email</label>
+                    <input class="form-control" name="email" id="email" type="email" placeholder="email" required="required" data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Telefono</label>
+                    <input class="form-control" name="telefono" id="telefono" type="text" placeholder="telefono" required="required" data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Username</label>
+                    <input class="form-control" name="username" id="username" type="text" placeholder="user" required="required" data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Contraseña</label>
+                    <input class="form-control" name="contrasenia" id="contrasenia" type="password" placeholder="contraseña" required="required" data-validation-required-message="Please enter your phone number.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="CrearUsuario" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id="listAgente" style="display: none;">
+        <h2>Listado de Agentes</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.rol.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.contrasenia)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.idRol == 2)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.rol.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contrasenia)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.dpi }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.dpi }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.dpi })
+                        </td>
+                    </tr>
+                }
+
+            }
+        </table>
+    </div>
+    <div id="listTecnico" style="display: none;">
+        <h2>Listado de Tecnicos</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.rol.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.contrasenia)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.idRol == 3)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.rol.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contrasenia)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.dpi }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.dpi }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.dpi })
+                        </td>
+                    </tr>
+                }
+
+            }
+        </table>
+    </div>
+
+    <form action="/Reporte/Sitio" method="post" id="searchForm">
+        <div style="display: none" id="consulta1">
+            <h3>Reporte 1</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class=" form-control">
+                <select class="browser-default custom-select" name="region">
+                    <option selected>Seleccione la region</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                    <option value="Este">Este</option>
+                    <option value="Oeste">Oeste</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sitio" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div style="display: none" id="consulta2">
+        <form action="/Reporte/Empresa" method="post" id="searchForm">
+            <h3>Empresa por Región</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class=" form-control">
+                <select class="browser-default custom-select" name="region">
+                    <option selected>Seleccione la region</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                    <option value="Este">Este</option>
+                    <option value="Oeste">Oeste</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Empresa" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <h2></h2>
+        <form action="/Reporte/Tipo" method="post" id="searchForm">
+            <h3>Empresa por Tipo</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class=" form-control">
+                <select class="browser-default custom-select" name="tipo">
+                    <option selected>Seleccione el tipo empresa</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Museo">Museo</option>
+                    <option value="Restaurante">Restaurante</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tipo" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <form action="/Reporte/Estado" method="post" id="searchForm">
+            <h3>Empresa por Estado</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class="form-control">
+                <select class="browser-default custom-select" name="estado">
+                    <option selected>Seleccione el estado</option>
+                    <option value="aceptada">Aceptada</option>
+                    <option value="rechazada">Rechazada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Estado" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <h2></h2>
+        <form action="/Reporte/HotelSer" method="post" id="searchForm">
+            <h3>Hotel por servicios y por region</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class="form-control">
+                <select class="browser-default custom-select" name="region">
+                    <option selected>Seleccione la region</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                    <option value="Este">Este</option>
+                    <option value="Oeste">Oeste</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Aceptar" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <h2></h2>
+        <form action="/Reporte/EmpresaFecha" method="post" id="searchForm">
+            <h3>Empresa por Fecha Inscripcion</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+                <div class="control-group">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Fecha</label>
+                            <input class="form-control" name="fecha" id="username" type="date" placeholder="usuario" required="required" data-validation-required-message="Please enter your email address.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Aceptar" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="display: none" id="consulta3">
+        <form action="/Reporte/Recorrido" method="post" id="searchForm">
+            <h3>Recorrido por Fecha</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+
+            <div class="control-group">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Fecha</label>
+                        <input class="form-control" name="fecha" id="username" type="date" placeholder="usuario" required="required" data-validation-required-message="Please enter your email address.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Recorrido" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+        <form action="/Reporte/TecnicoVisita" method="post" id="searchForm">
+            <h3>Recorrido por técnico</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.mensaje != null)
+            {
+                <div class="form group">
+                    <div class="alert-success">
+                        @ViewBag.mensaje
+                    </div>
+                </div>
+            }
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Técnico</label>
+                    <input class="form-control" name="dpi" id="dpi" type="text" placeholder="dpi" required="required" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tecnico" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
