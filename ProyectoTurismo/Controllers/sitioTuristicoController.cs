@@ -1,5 +1,4 @@
-﻿using ProyectoTurismo.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,137 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProyectoTurismo.DAL;
 
 namespace ProyectoTurismo.Controllers
 {
-    public class usuarioController : Controller
+    public class sitioTuristicoController : Controller
     {
         private DBTurismo db = new DBTurismo();
 
-        // GET: usuario
+        // GET: sitioTuristico
         public ActionResult Index()
         {
-            var usuarios = db.usuarios.Include(u => u.rol);
-            return View(usuarios.ToList());
+            var sitioTuristicoes = db.sitioTuristicoes.Include(s => s.region);
+            return View(sitioTuristicoes.ToList());
         }
 
-        // GET: usuario/Details/5
-        [HttpGet]
+        // GET: sitioTuristico/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
+            sitioTuristico sitioTuristico = db.sitioTuristicoes.Find(id);
+            if (sitioTuristico == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(sitioTuristico);
         }
 
-        // GET: usuario/Create
+        // GET: sitioTuristico/Create
         public ActionResult Create()
         {
-            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre");
+            ViewBag.idRegion = new SelectList(db.regions, "idRegion", "nombre");
             return View();
         }
 
-        // POST: usuario/Create
+        // POST: sitioTuristico/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "dpi,idRol,nombre,email,telefono,username,contrasenia")] usuario usuario)
+        public ActionResult Create([Bind(Include = "idSitio,idRegion,nombre,descripcion,estado,foto")] sitioTuristico sitioTuristico)
         {
             if (ModelState.IsValid)
             {
-                db.usuarios.Add(usuario);
+                db.sitioTuristicoes.Add(sitioTuristico);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre", usuario.idRol);
-            return View(usuario);
+            ViewBag.idRegion = new SelectList(db.regions, "idRegion", "nombre", sitioTuristico.idRegion);
+            return View(sitioTuristico);
         }
 
-        public ActionResult CrearUsuario()
-        {
-            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre");
-            return View();
-        } 
-
-        [HttpPost]
-        public ActionResult CrearUsuario(usuario usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                /* rol rol = db.rols.FirstOrDefault(r => r.Idrol == 2);
-                 usuario.rol = rol;*/
-                db.usuarios.Add(usuario);
-                db.SaveChanges();
-                ViewBag.mensaje = "El usuario " + usuario.nombre + " Fue registrado satisfactoriamente.";
-                ModelState.Clear();
-            }
-            return RedirectToAction("Index");
-        }
-
-        // GET: usuario/Edit/5
+        // GET: sitioTuristico/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
+            sitioTuristico sitioTuristico = db.sitioTuristicoes.Find(id);
+            if (sitioTuristico == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre", usuario.idRol);
-            return View(usuario);
+            ViewBag.idRegion = new SelectList(db.regions, "idRegion", "nombre", sitioTuristico.idRegion);
+            return View(sitioTuristico);
         }
 
-        // POST: usuario/Edit/5
+        // POST: sitioTuristico/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "dpi,idRol,nombre,email,telefono,username,contrasenia")] usuario usuario)
+        public ActionResult Edit([Bind(Include = "idSitio,idRegion,nombre,descripcion,estado,foto")] sitioTuristico sitioTuristico)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(sitioTuristico).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idRol = new SelectList(db.rols, "Idrol", "nombre", usuario.idRol);
-            return View(usuario);
+            ViewBag.idRegion = new SelectList(db.regions, "idRegion", "nombre", sitioTuristico.idRegion);
+            return View(sitioTuristico);
         }
 
-        // GET: usuario/Delete/5
+        // GET: sitioTuristico/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            usuario usuario = db.usuarios.Find(id);
-            if (usuario == null)
+            sitioTuristico sitioTuristico = db.sitioTuristicoes.Find(id);
+            if (sitioTuristico == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(sitioTuristico);
         }
 
-        // POST: usuario/Delete/5
+        // POST: sitioTuristico/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            usuario usuario = db.usuarios.Find(id);
-            db.usuarios.Remove(usuario);
+            sitioTuristico sitioTuristico = db.sitioTuristicoes.Find(id);
+            db.sitioTuristicoes.Remove(sitioTuristico);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

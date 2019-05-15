@@ -136,17 +136,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\empresasController.cs" />
     <Compile Include="Controllers\empresa_RegionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\SitioController.cs" />
+    <Compile Include="Controllers\sitioTuristicoController.cs" />
     <Compile Include="Controllers\TecnicoPanelController.cs" />
     <Compile Include="Controllers\usuarioController.cs" />
     <Compile Include="DAL\DBTurismo.cs" />
     <Compile Include="DAL\DBTurismo2.cs" />
+    <Compile Include="Models\compartir.cs" />
     <Compile Include="Models\empresa_Region.cs" />
     <Compile Include="Models\especialidad_Empresa.cs" />
     <Compile Include="Models\especialidad_Servicio.cs" />
+    <Compile Include="Models\favorito.cs" />
+    <Compile Include="Models\megusta.cs" />
     <Compile Include="Models\ModeloConsultas.cs" />
     <Compile Include="Models\recorrido_Empresa.cs" />
     <Compile Include="Models\empresa.cs" />
@@ -157,6 +162,7 @@
     <Compile Include="Models\rol.cs" />
     <Compile Include="Models\servicio.cs" />
     <Compile Include="Models\sitioTuristico.cs" />
+    <Compile Include="Models\sitio_comentario.cs" />
     <Compile Include="Models\tipoEmpresa.cs" />
     <Compile Include="Models\usuario.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,9 +232,27 @@
     <Content Include="Views\Reporte\ListadoSitio.cshtml" />
     <Content Include="Views\Reporte\ListadoEmpresa.cshtml" />
     <Content Include="Views\Reporte\EmpresaFecha.cshtml" />
+    <Content Include="Views\empresas\Create.cshtml" />
+    <Content Include="Views\empresas\Delete.cshtml" />
+    <Content Include="Views\empresas\Details.cshtml" />
+    <Content Include="Views\empresas\Edit.cshtml" />
+    <Content Include="Views\empresas\Index.cshtml" />
+    <Content Include="Views\Home\EmpresasView.cshtml" />
+    <Content Include="Views\Cuenta\Registro.cshtml" />
+    <Content Include="Views\Home\TuristaPanel.cshtml" />
+    <Content Include="Views\Reporte\EmpresaFavoritos.cshtml" />
+    <Content Include="Views\Reporte\Notificaciones.cshtml" />
+    <Content Include="Views\Empresa\CompartirEm.cshtml" />
+    <Content Include="Views\sitioTuristico\Create.cshtml" />
+    <Content Include="Views\sitioTuristico\Delete.cshtml" />
+    <Content Include="Views\sitioTuristico\Details.cshtml" />
+    <Content Include="Views\sitioTuristico\Edit.cshtml" />
+    <Content Include="Views\sitioTuristico\Index.cshtml" />
+    <Content Include="Views\Empresa\CompartirSitio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

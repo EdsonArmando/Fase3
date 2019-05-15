@@ -151,17 +151,23 @@
             </div>
             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Nombre</label>
-                <input class="form-control" name="nombre" id="nombre" type="search" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+                
+                    <select class="form-control" name="region" required="required">
+                        <option selected>Seleccione la Especialidad</option>
+                        <option value="Norte">Carne</option>
+                        <option value="Sur">Pollo</option>
+                        <option value="Este">Ceviche</option>
+                        <option value="Oeste">Mojarras</option>
+                    </select>
+               
+                
             </div>
             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Horario Atención</label>
                 <input class="form-control" name="nombre" id="nombre" type="search" placeholder="horario" required="required" data-validation-required-message="Please enter your phone number.">
+                <input type="submit" value="Aceptar" class="btn btn-default" />
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Aceptar" class="btn btn-default" />
-                </div>
-            </div>
+                   
         </div>
     </form>
     <form id="formulario3" action="" method="post">
@@ -172,11 +178,21 @@
                     <input class="form-control" name="servicio" id="servicio" type="text" placeholder="servicio" required="required" data-validation-required-message="Please enter your phone number.">
                 </div>
             </div>
+            
             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Nombre</label>
-                <input class="form-control" name="nombre" id="nombre" type="text" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
+
+                <select class="form-control" name="region" required="required">
+                    <option selected>Seleccione el Servicio</option>
+                    <option value="Norte">Television</option>
+                    <option value="Sur">Internet</option>
+                    <option value="Este">Parqueo</option>
+                    <option value="Oeste">Lavanderia</option>
+                </select>
+                <input type="submit" value="Aceptar" class="btn btn-default" />
+
             </div>
-        </div>
+            </div>
     </form>
 </body>
 </html>

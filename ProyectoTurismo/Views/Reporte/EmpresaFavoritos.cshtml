@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
+@{
+    ViewBag.Title = "EmpresaFavoritos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EmpresaFavoritos</h2>
+
+    <h2>Listado de FAVORITOS</h2>
+    <table class="table">
+        <tr>
+            <th scope="col">idSitio</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Username</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empresa.idEmpresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empresa.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.favorito.username)
+                </td>
+
+            </tr>
+
+
+        }
+    </table>

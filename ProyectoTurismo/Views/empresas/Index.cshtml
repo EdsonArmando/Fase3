@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ProyectoTurismo.DAL.empresa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoEmpresa.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarifa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaAuto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoEmpresa.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarifa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaAuto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idEmpresa }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idEmpresa }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idEmpresa })
+        </td>
+    </tr>
+}
+
+</table>

@@ -4,6 +4,7 @@ namespace ProyectoTurismo.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using ProyectoTurismo.Models;
 
     public partial class DBTurismo : DbContext
     {
@@ -26,6 +27,12 @@ namespace ProyectoTurismo.DAL
         public virtual DbSet<especialidad_Empresa> especialidad_Empresa { get; set; }
         public virtual DbSet<especialidad_Servicio> especialidad_Servicio { get; set; }
         public virtual DbSet<recorrido_Empresa> recorrido_Empresa { get; set; }
+        public virtual DbSet<favorito> favorito { get; set; }
+        public virtual DbSet<megusta> megusta { get; set; }
+        public virtual DbSet<sitio_comentario> sitio_comentario { get; set; }
+        public virtual DbSet<compartir> compartir { get; set; }
+
+
         //public System.Data.Entity.DbSet<ProyectoTurismo.DAL.empresa_Region> empresa_Region { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -228,6 +235,57 @@ namespace ProyectoTurismo.DAL
 
             modelBuilder.Entity<recorrido_Empresa>()
                 .Property(e => e.idEmpresa)
+                .IsUnicode(false);
+            modelBuilder.Entity<favorito>()
+               .Property(e => e.idEmpresa)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<favorito>()
+                .Property(e => e.idSitio)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<favorito>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<megusta>()
+                .Property(e => e.idEmpresa)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<megusta>()
+                .Property(e => e.idSitio)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sitio_comentario>()
+                .Property(e => e.idSitio)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sitio_comentario>()
+              .Property(e => e.idEmpresa)
+              .IsUnicode(false);
+
+            modelBuilder.Entity<sitio_comentario>()
+                .Property(e => e.comentario)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sitio_comentario>()
+                .Property(e => e.usuario)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<compartir>()
+               .Property(e => e.idEmpresa)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<compartir>()
+                .Property(e => e.idSitio)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<compartir>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<compartir>()
+                .Property(e => e.usernameCompartir)
                 .IsUnicode(false);
         }
 

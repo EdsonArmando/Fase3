@@ -18,5 +18,7 @@ namespace ProyectoTurismo.Models
         public recorrido_Empresa recorrido_Empresa { get; set; }
         public servicio servicio { get; set; }
         public especialidad_Servicio especialidad_Servicio { get; set; }
+        public favorito favorito { get; set; }
+        public compartir compartir { get; set; }
     }
 }

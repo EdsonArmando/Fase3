@@ -1,0 +1,89 @@
+﻿@model ProyectoTurismo.DAL.empresa
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <style>
+        .form-control {
+            display: block;
+            width: 30%;
+        }
+
+        .form-group input[type="checkbox"] {
+            display: none;
+        }
+
+            .form-group input[type="checkbox"] + .btn-group > label span {
+                width: 20px;
+            }
+
+                .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+                    display: none;
+                }
+
+                .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+                    display: inline-block;
+                }
+
+            .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+                display: inline-block;
+            }
+
+            .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+                display: none;
+            }
+
+       
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+    <div class="control-group">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>idEmpresa</label>
+                @Html.EditorFor(model => model.idEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="btnGetDetails" type="submit" value="Recorrido" class="btn btn-default" />
+        </div>
+    </div>
+  
+</body>
+</html>
+<script>
+    $('#btnGetDetails').click(function (e) {
+        e.preventDefault();
+
+        var person = prompt("Please enter your name", "Harry Potter");
+        var com = {
+
+            idEmpresa: $("#idEmpresa").val(),
+
+            usernameCompartir: person
+
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:14550/empresas/CompartirEmpresa",
+            content: "application/json; charset=utf-8",
+            dataType: "json",
+            data: com,
+            success: function (d) {
+                if (d.success == true)
+                    window.location = "index.html";
+                else { }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                // TODO: Show error
+            }
+        });
+    });
+</script>

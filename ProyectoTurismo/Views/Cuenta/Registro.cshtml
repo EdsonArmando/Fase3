@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Suscripcion</h2>
+<div class="form-horizontal">
+    <div class="center-block">
+        <h4>Turista</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if (ViewBag.mensaje != null)
+        {
+            <div class="form group">
+                <div class="alert-success">
+                    @ViewBag.mensaje
+                </div>
+            </div>
+        }
+            <form action="/Cuenta/RegistroTurista" method="post">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Usuario</label>
+                        <input class="form-control" name="username" id="username" type="text" placeholder="usuario" required="required" data-validation-required-message="Please enter your email address.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Contraseña</label>
+                        <input class="form-control" name="contrasenia" id="contrasenia" type="password" placeholder="contraseña" required="required" data-validation-required-message="Please enter your phone number.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Aceptar" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>

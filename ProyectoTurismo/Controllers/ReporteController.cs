@@ -11,6 +11,7 @@ namespace ProyectoTurismo.Controllers
     public class ReporteController : Controller
     {
         private DBTurismo db = new DBTurismo();
+        string nombre = CuentaController.nombre;
         // GET: Reporte
         public ActionResult Index()
         {
@@ -92,7 +93,24 @@ namespace ProyectoTurismo.Controllers
                            };
             return View(consulta);
         }
- 
+
+        public ActionResult Notificaciones()
+        {
+            var consulta = from s in db.sitioTuristicoes
+                           from c in db.compartir
+                           from r in db.regions
+                           where c.idSitio == s.idSitio
+                           where c.usernameCompartir == nombre
+                           where r.idRegion == s.idRegion
+                           select new ModeloConsultas
+                           {
+                               region = r,
+                               sitioTuristico = s,
+                               compartir = c
+                           };
+            return View(consulta);
+        }
+
         public ActionResult ListadoSitio()
         {
             var consulta = from s in db.sitioTuristicoes
@@ -117,6 +135,16 @@ namespace ProyectoTurismo.Controllers
                                empresa = e, tipoEmpresa = ti, empresa_Region = em, region = r
                            };
             return View(consulta);
+        }
+        public ActionResult EmpresaFavoritos()
+        {
+            var consulta2 = from f in db.favorito
+                            from e in db.empresas
+
+                            where f.idEmpresa == e.idEmpresa
+                            where f.username == nombre
+                            select new ModeloConsultas { favorito = f, empresa = e };
+            return View(consulta2);
         }
         [HttpPost]
         public ActionResult EmpresaFecha(DateTime fecha)

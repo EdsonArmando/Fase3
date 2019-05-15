@@ -1,0 +1,107 @@
+﻿@model ProyectoTurismo.DAL.empresa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Noticias sobre la Empresa</h2>
+
+<div>
+    <h4>empresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoEmpresa.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoEmpresa.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarifa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarifa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaAuto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaAuto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idEmpresa }) 
+ 
+</p>

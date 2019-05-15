@@ -1,17 +1,16 @@
 ﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
 @{
-    /**/
-
-    ViewBag.Title = "Consulta";
+    ViewBag.Title = "Notificaciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Reporte de Sitio</h2>
-@ViewBag.mensaje
-<table class="table table-dark">
+<h2>Notificaciones</h2>
+<table class="table">
     <thead>
         <tr>
-            <th scope="col">Nombre</th>
+            <th scope="col">id</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Sitio</th>
             <th scope="col">Region</th>
         </tr>
     </thead>
@@ -19,6 +18,8 @@
         @foreach (var item in Model)
         {
         <tr>
+            <td>@item.compartir.idCompartir</td>
+            <td>@item.compartir.username</td>
             <td>@item.sitioTuristico.nombre</td>
             <td>@item.region.nombre</td>
         </tr>
