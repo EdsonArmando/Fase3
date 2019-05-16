@@ -12,6 +12,7 @@ namespace ProyectoTurismo.Controllers
     {
         public DBTurismo db = new DBTurismo();
         public static string nombre;
+        public static string dpi;
         // GET: Cuenta
         public ActionResult Index()
         {
@@ -50,6 +51,7 @@ namespace ProyectoTurismo.Controllers
             }
             else if (usr != null && usr.rol == rolTecnico)
             {
+                dpi = usr.dpi;
                 Session["nombreUsuario"] = usr.nombre;
                 Session["idUsuario"] = usr.dpi;
                 Session["idRol"] = usr.idRol;

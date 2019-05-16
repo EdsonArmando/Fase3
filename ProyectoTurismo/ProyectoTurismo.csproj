@@ -138,6 +138,8 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\empresasController.cs" />
     <Compile Include="Controllers\empresa_RegionController.cs" />
+    <Compile Include="Controllers\especialidad_EmpresaController.cs" />
+    <Compile Include="Controllers\especialidad_ServicioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\SitioController.cs" />
@@ -249,6 +251,22 @@
     <Content Include="Views\sitioTuristico\Edit.cshtml" />
     <Content Include="Views\sitioTuristico\Index.cshtml" />
     <Content Include="Views\Empresa\CompartirSitio.cshtml" />
+    <Content Include="Views\especialidad_Empresa\Create.cshtml" />
+    <Content Include="Views\especialidad_Empresa\Delete.cshtml" />
+    <Content Include="Views\especialidad_Empresa\Details.cshtml" />
+    <Content Include="Views\especialidad_Empresa\Edit.cshtml" />
+    <Content Include="Views\especialidad_Empresa\Index.cshtml" />
+    <Content Include="Views\especialidad_Servicio\Create.cshtml" />
+    <Content Include="Views\especialidad_Servicio\Delete.cshtml" />
+    <Content Include="Views\especialidad_Servicio\Details.cshtml" />
+    <Content Include="Views\especialidad_Servicio\Edit.cshtml" />
+    <Content Include="Views\especialidad_Servicio\Index.cshtml" />
+    <Content Include="Views\Reporte\ComentarioSitio.cshtml" />
+    <Content Include="Views\Reporte\NotificacionesEmpresa.cshtml" />
+    <Content Include="Views\Reporte\ComentarioEmpresa.cshtml" />
+    <Content Include="Views\Reporte\Like.cshtml" />
+    <Content Include="Views\Reporte\Favoritos.cshtml" />
+    <Content Include="Views\Reporte\FavoritosSitios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

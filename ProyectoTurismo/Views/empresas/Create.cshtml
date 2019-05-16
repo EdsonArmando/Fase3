@@ -1,11 +1,11 @@
 ﻿@model ProyectoTurismo.DAL.empresa
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "IngresarEmpresa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>CrearEmpresa</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -63,11 +63,10 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="display:none">
             @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                <input class="form-control" name="estado" value="Pre-evaluacion" type="text" placeholder="nombre" required="required" data-validation-required-message="Please enter your phone number.">
             </div>
         </div>
 
@@ -103,7 +102,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="display:none">
             @Html.LabelFor(model => model.fechaAuto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.fechaAuto, new { htmlAttributes = new { @class = "form-control" } })
@@ -120,5 +119,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ver Listado", "Index")
 </div>

@@ -519,7 +519,11 @@
             </div>
             <h2></h2>
             <div class="btn-group">
-                @Html.ActionLink("Reporte Analisis de Comentarios", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
+                @Html.ActionLink("Reporte Analisis de Comentarios", "ComentarioSitio", "Reporte", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
+            </div>
+            <h2></h2>
+            <div class="btn-group">
+                @Html.ActionLink("Reporte Analisis de ComentariosEm", "ComentarioEmpresa", "Reporte", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
             </div>
             <h2></h2>
             <div class="btn-group">
@@ -527,11 +531,15 @@
             </div>
             <h2></h2>
             <div class="btn-group">
-                @Html.ActionLink("Reporte de MeGusta", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
+                @Html.ActionLink("Reporte de MeGusta", "Like", "Reporte", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
             </div>
             <h2></h2>
             <div class="btn-group">
-                @Html.ActionLink("Reporte de Favoritos", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
+                @Html.ActionLink("EmpresasFavoritos", "Favoritos", "Reporte", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
+            </div>
+            <h2></h2>
+            <div class="btn-group">
+                @Html.ActionLink("SitiosFavoritos", "FavoritosSitios", "Reporte", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg", @role = "button" })
             </div>
         </form>
     </div>

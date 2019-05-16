@@ -8,6 +8,8 @@ namespace ProyectoTurismo.Models
 {
     public class ModeloConsultas
     {
+        public string nombreEmpresa { get; set; }
+        public string nombreRegion { get; set; }
         public sitioTuristico sitioTuristico { get; set; }
         public region region { get; set; }
         public empresa empresa { get; set; }
@@ -20,5 +22,7 @@ namespace ProyectoTurismo.Models
         public especialidad_Servicio especialidad_Servicio { get; set; }
         public favorito favorito { get; set; }
         public compartir compartir { get; set; }
+        public sitio_comentario sitio_Comentario { get; set; }
+        public megusta megusta { get; set; }
     }
 }

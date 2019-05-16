@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
+@{
+    ViewBag.Title = "NotificacionesEmpresa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NotificacionesEmpresa</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.compartir.idCompartir</td>
+                <td>@item.compartir.username</td>
+                <td>@item.empresa.nombre</td>
+                <td>@item.region.nombre</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

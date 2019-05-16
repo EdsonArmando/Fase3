@@ -15,8 +15,10 @@ namespace ProyectoTurismo.Controllers
         {
             return View();
         }
+
         public ActionResult Registro()
         {
+
             return View();
         }
         public ActionResult CompartirEm(string id)

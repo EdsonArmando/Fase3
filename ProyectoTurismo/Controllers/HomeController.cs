@@ -12,7 +12,7 @@ namespace ProyectoTurismo.Controllers
     {
         private DBTurismo db = new DBTurismo();
         string nombre = CuentaController.nombre;
-
+        string dpi = CuentaController.dpi;
         public ActionResult Index()
         {
             var consulta = from s in db.sitioTuristicoes
@@ -69,9 +69,14 @@ namespace ProyectoTurismo.Controllers
         }
         public ActionResult TecnicoPanel()
         {
-            ViewBag.Message = "Your contact page.";
+            var consulta = from e in db.empresas
+                           from r in db.regions
+                           from em in db.empresa_Region
+                           where e.idEmpresa == em.idEmpresa
+                           where r.idRegion == em.idRegion
+                           select new ModeloConsultas { empresa = e, empresa_Region = em, region = r };
 
-            return View();
+            return View(consulta);
         }
         public ActionResult AdministradorPanel()
         {

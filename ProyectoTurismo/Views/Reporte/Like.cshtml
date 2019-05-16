@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
+@{
+    ViewBag.Title = "Like";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Like</h2>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">idEmpresa</th>
+            <th scope="col">NombreEmpresa</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.empresa.idEmpresa</td>
+            <td>@item.empresa.nombre</td>
+            <td>@item.megusta.megusta1</td>
+            <td>@item.tipoEmpresa.nombre</td>   
+        </tr>
+        }
+
+    </tbody>
+</table>
+

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ProyectoTurismo.Models.ModeloConsultas>
 
 <!DOCTYPE html>
 <html>
@@ -44,33 +44,40 @@
         </button>
 
     </div>
-    <form action="/Cuenta/Login" id="searchForm" method="post">
+    <form action="/TecnicoPanel/Crear" id="searchForm" method="post">
         <div id="element" style="display: none;">
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>idRecorrido</label>
+                    <input class="form-control" name="idRecorrido" id="username" type="text" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
                     <label>Nombre</label>
-                    <input class="form-control" name="username" id="username" type="text" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
+                    <input class="form-control" name="dpi" id="username" type="text" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                     <label>NombreRecorrido</label>
-                    <input class="form-control" name="username" id="username" type="text" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
+                    <input class="form-control" name="nombre" id="username" type="text" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                     <label>FechaInicio</label>
-                    <input class="form-control" name="username" id="username" type="date" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
+                    <input class="form-control" name="fechaInicio" id="username" type="date" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                     <label>FechaFin</label>
-                    <input class="form-control" name="username" id="username" type="date" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
+                    <input class="form-control" name="fechaFin" id="username" type="date" placeholder="empresa" required="required" data-validation-required-message="Please enter your email address.">
                     <p class="help-block text-danger"></p>
                 </div>
             </div>
@@ -84,38 +91,32 @@
     <div id="element2" style="display: none;">
         <h2>Listado de Empresas</h2>
         <div id="close"><a href="#" id="hide2">cerrar</a></div>
+        @ViewBag.mensaje
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Verificar</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Model)
+                {
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>mdo</td>
-                    <td><a  id="mostrar">Verificar</a></td>
+                    <td>@item.empresa.idEmpresa</td>
+                    <td>@item.empresa.nombre</td>
+                    <td>@item.region.nombre</td>
+                    <td>@item.empresa.estado</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "empresas", new { id = item.empresa.idEmpresa })">Verificar</a>
+                       
+                    </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>fat</td>
-                    <td><a id="mostrar">Verificar</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>twitter</td>
-                    <td><a id="mostrar">Verificar</a></td>
-                </tr>
+                }
+
             </tbody>
         </table>
     </div>
@@ -124,7 +125,7 @@
             <h2>Listado de Servicios</h2>
         </div>
         <div class="[ col-xs-12 col-sm-6 ]">
-         
+
             <div class="[ form-group ]">
                 <input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
                 <div class="[ btn-group ]">
@@ -145,7 +146,7 @@
                         <span> </span>
                     </label>
                     <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
-                       Internet
+                        Internet
                     </label>
                 </div>
             </div>
@@ -169,7 +170,7 @@
                         <span> </span>
                     </label>
                     <label for="fancy-checkbox-warning" class="[ btn btn-default active ]">
-                       Duchas
+                        Duchas
                     </label>
                 </div>
             </div>
@@ -181,7 +182,7 @@
                         <span> </span>
                     </label>
                     <label for="fancy-checkbox-danger" class="[ btn btn-default active ]">
-                       TV
+                        TV
                     </label>
                 </div>
             </div>
